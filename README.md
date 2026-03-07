@@ -1,4 +1,4 @@
-![CI](https://github.com/dobro10k2/project-devops-deploy/actions/workflows/ci.yml/badge.svg)
+[![CI](https://github.com/dobro10k2/project-devops-deploy/actions/workflows/ci.yml/badge.svg)](https://github.com/dobro10k2/project-devops-deploy/actions/workflows/ci.yml)
 
 # Project DevOps Deploy
 
