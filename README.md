@@ -1,3 +1,5 @@
+![CI](https://github.com/dobro10k2/project-devops-deploy/actions/workflows/ci.yml/badge.svg)
+
 # Project DevOps Deploy
 
 ## Hexlet Project — Bulletin Board (IaC)
