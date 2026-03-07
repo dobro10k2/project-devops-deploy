@@ -41,7 +41,7 @@ Docker image can be published to a container registry (Docker Hub, GitHub Contai
 Example image name:
 
 ```
-profitp0int/devops-engineer-from-scratch-project-315
+https://github.com/dobro10k2/project-devops-deploy/
 ```
 
 ---
