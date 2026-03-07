@@ -1,27 +1,23 @@
-test:
-	./gradlew test
-
-start: run
-
-run:
-	./gradlew bootRun
-
-update-gradle:
-	./gradlew wrapper --gradle-version 9.2.1
-
-update-deps:
-	./gradlew refreshVersions
-
-install:
-	./gradlew dependencies
-
-build:
-	./gradlew build
-
-lint:
-	./gradlew spotlessCheck
+IMAGE_NAME=bulletins-app
+DOCKER_REPO=profitp0int/devops-engineer-from-scratch-project-315
 
 lint-fix:
 	./gradlew spotlessApply
 
-.PHONY: build
+docker-build:
+	docker build -t $(IMAGE_NAME) .
+
+docker-run:
+	docker run -p 8080:8080 -p 9091:9090 \
+		-e SPRING_PROFILES_ACTIVE=dev \
+		$(IMAGE_NAME)
+
+docker-push:
+	docker tag $(IMAGE_NAME) $(DOCKER_REPO):latest
+	docker push $(DOCKER_REPO):latest
+
+docker-stop:
+	docker stop $$(docker ps -q --filter ancestor=$(IMAGE_NAME))
+
+docker-clean:
+	docker rmi $(IMAGE_NAME)

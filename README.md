@@ -1,5 +1,55 @@
 # Project DevOps Deploy
 
+## Hexlet Project — Bulletin Board (IaC)
+
+Dockerized bulletin board service built with Spring Boot and a React admin frontend.
+
+The result of this repository is a **Docker container image** that runs the bulletin board application.
+
+---
+
+## Quick Start (Docker)
+
+Build the Docker image:
+
+```bash
+make docker-build
+```
+
+Run the container:
+
+```bash
+make docker-run
+```
+
+Application will be available at:
+
+http://localhost:8080
+
+Swagger API documentation:
+
+http://localhost:8080/swagger-ui/index.html
+
+---
+
+## Container Image
+
+Docker image can be published to a container registry (Docker Hub, GitHub Container Registry, etc.).
+
+Example image name:
+
+```
+profitp0int/devops-engineer-from-scratch-project-315
+```
+
+---
+
+## Original Project Documentation
+
+The section below contains the original project documentation.
+
+---
+
 Bulletin board service.
 
 > **Fork policy**: this upstream repository is read-only. We do not review or merge pull requests and we do not accept infrastructure changes (Dockerfiles, Ansible roles, CI/CD workflows, etc.). To experiment or extend the project, fork it and work inside your own repository.
