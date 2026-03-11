@@ -29,7 +29,9 @@ https://board.dobro10k2.ru/swagger-ui/index.html
 
 Start backend:
 
+```
 make run
+```
 
 Application will be available at:
 
@@ -45,11 +47,15 @@ http://localhost:8080/swagger-ui/index.html
 
 Build image:
 
+```
 make docker-build
+```
 
 Run container:
 
+```
 make docker-run
+```
 
 Application will be available at:
 
