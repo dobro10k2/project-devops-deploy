@@ -1,5 +1,5 @@
-IMAGE_NAME=devops-engineer-from-scratch-project-315
-DOCKER_REPO=ghcr.io/dobro10k2/devops-engineer-from-scratch-project-315
+IMAGE_NAME=project-devops-deploy
+DOCKER_REPO=ghcr.io/dobro10k2/project-devops-deploy
 
 # Get short git commit sha
 GIT_SHA := $(shell git rev-parse --short HEAD)
@@ -32,9 +32,3 @@ docker-stop:
 
 docker-clean:
 	docker rmi $(IMAGE_NAME)
-
-ansible:
-	ansible-playbook playbook.yml -e docker_tag=$(or $(docker_tag),$(GIT_SHA)) --ask-vault-pass
-
-deploy:
-	ansible-playbook playbook.yml -e docker_tag=$(or $(docker_tag),$(GIT_SHA)) --tags deploy --ask-vault-pass
