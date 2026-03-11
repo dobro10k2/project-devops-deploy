@@ -1,11 +1,10 @@
----
 name: CI
 
 on:
   push:
-    branches:
-      - "**"
+    branches: [ main ]
   pull_request:
+    branches: [ main ]
 
 jobs:
 
@@ -22,8 +21,7 @@ jobs:
 
       - uses: gradle/actions/setup-gradle@v4
 
-      - name: Check code formatting
-        run: ./gradlew spotlessCheck
+      - run: ./gradlew spotlessCheck
 
   unit-tests:
     runs-on: ubuntu-latest
@@ -39,8 +37,7 @@ jobs:
 
       - uses: gradle/actions/setup-gradle@v4
 
-      - name: Run tests
-        run: ./gradlew test
+      - run: ./gradlew test
 
   docker-build:
     runs-on: ubuntu-latest
@@ -53,21 +50,12 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Setup Docker Buildx
-        uses: docker/setup-buildx-action@v3
+      - uses: docker/setup-buildx-action@v3
 
-      - name: Login to GitHub Container Registry
-        uses: docker/login-action@v3
+      - uses: docker/login-action@v3
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Build Docker image
-        run: make docker-build
-
-      - name: Tag Docker image
-        run: make docker-tag
-
-      - name: Push Docker image
-        run: make docker-push
+      - run: make docker-publish

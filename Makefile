@@ -1,8 +1,10 @@
-IMAGE_NAME=bulletins-app
-DOCKER_REPO=ghcr.io/dobro10k2/project-devops-deploy
+IMAGE_NAME=devops-engineer-from-scratch-project-315
+DOCKER_REPO=ghcr.io/dobro10k2/devops-engineer-from-scratch-project-315
 
 # Get short git commit sha
 GIT_SHA := $(shell git rev-parse --short HEAD)
+
+.PHONY: docker-build docker-tag docker-push docker-run docker-stop docker-clean
 
 lint-fix:
 	./gradlew spotlessApply
@@ -21,7 +23,7 @@ docker-push:
 docker-publish: docker-build docker-tag docker-push
 
 docker-run:
-	docker run -p 8080:8080 -p 9091:9090 \
+	docker run -p 8080:8080 -p 9090:9090 \
 		-e SPRING_PROFILES_ACTIVE=dev \
 		$(IMAGE_NAME)
 
@@ -30,3 +32,9 @@ docker-stop:
 
 docker-clean:
 	docker rmi $(IMAGE_NAME)
+
+ansible:
+	ansible-playbook playbook.yml -e docker_tag=$(or $(docker_tag),$(GIT_SHA)) --ask-vault-pass
+
+deploy:
+	ansible-playbook playbook.yml -e docker_tag=$(or $(docker_tag),$(GIT_SHA)) --tags deploy --ask-vault-pass
