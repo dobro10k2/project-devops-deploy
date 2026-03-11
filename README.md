@@ -1,48 +1,136 @@
 [![CI](https://github.com/dobro10k2/project-devops-deploy/actions/workflows/ci.yml/badge.svg)](https://github.com/dobro10k2/project-devops-deploy/actions/workflows/ci.yml)
 
-# Project DevOps Deploy
+# Bulletin Board Application
 
-## Hexlet Project — Bulletin Board (IaC)
+Bulletin board service built with **Spring Boot** and **React Admin**.
 
-Dockerized bulletin board service built with Spring Boot and a React admin frontend.
+This repository contains the **application source code and Docker image configuration**.
 
-The result of this repository is a **Docker container image** that runs the bulletin board application.
+Infrastructure provisioning and deployment are managed in a separate DevOps repository.
+
+DevOps repository:
+https://github.com/dobro10k2/devops-engineer-from-scratch-project-315
 
 ---
 
-## Quick Start (Docker)
+# Application
 
-Build the Docker image:
+Production URL:
 
-```bash
-make docker-build
-```
+https://board.dobro10k2.ru
 
-Run the container:
+Swagger API:
 
-```bash
-make docker-run
-```
+https://board.dobro10k2.ru/swagger-ui/index.html
+
+---
+
+# Run locally
+
+Start backend:
+
+make run
 
 Application will be available at:
 
 http://localhost:8080
 
-Swagger API documentation:
+Swagger UI:
 
 http://localhost:8080/swagger-ui/index.html
 
 ---
 
-## Container Image
+# Docker
 
-Docker image can be published to a container registry (Docker Hub, GitHub Container Registry, etc.).
+Build image:
 
-Example image name:
+make docker-build
 
-```
-https://github.com/dobro10k2/project-devops-deploy/
-```
+Run container:
+
+make docker-run
+
+Application will be available at:
+
+http://localhost:8080
+
+---
+
+# Container Image
+
+Docker images are published to **GitHub Container Registry**.
+
+Repository:
+
+ghcr.io/dobro10k2/devops-engineer-from-scratch-project-315
+
+Example image:
+
+ghcr.io/dobro10k2/devops-engineer-from-scratch-project-315:latest
+
+Run container:
+
+docker run -p 8080:8080 ghcr.io/dobro10k2/devops-engineer-from-scratch-project-315:latest
+
+---
+
+# Frontend
+
+Frontend source code is located in:
+
+frontend/
+
+Run development server:
+
+cd frontend
+make install
+make start
+
+The dev server runs at:
+
+http://localhost:5173
+
+and proxies API requests to:
+
+http://localhost:8080
+
+---
+
+# API
+
+Example request:
+
+GET /api/bulletins
+
+Swagger documentation:
+
+/swagger-ui/index.html
+
+---
+
+# Object Storage
+
+Images uploaded by users are stored in **S3-compatible storage** (MinIO in production).
+
+Image upload flow:
+
+1. Frontend uploads image to `/api/files/upload`
+2. Backend stores file in S3
+3. Bulletin stores only the `imageKey`
+4. Image is accessed through a generated URL
+
+---
+
+# Repository
+
+Application source code:
+
+https://github.com/dobro10k2/project-devops-deploy
+
+DevOps infrastructure repository:
+
+https://github.com/dobro10k2/devops-engineer-from-scratch-project-315
 
 ---
 
