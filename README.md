@@ -69,16 +69,21 @@ Docker images are published to **GitHub Container Registry**.
 
 Repository:
 
+```
 ghcr.io/dobro10k2/devops-engineer-from-scratch-project-315
+```
 
 Example image:
 
+```
 ghcr.io/dobro10k2/devops-engineer-from-scratch-project-315:latest
+```
 
 Run container:
 
+```
 docker run -p 8080:8080 ghcr.io/dobro10k2/devops-engineer-from-scratch-project-315:latest
-
+```
 ---
 
 # Frontend
@@ -89,9 +94,11 @@ frontend/
 
 Run development server:
 
+```
 cd frontend
 make install
 make start
+```
 
 The dev server runs at:
 
