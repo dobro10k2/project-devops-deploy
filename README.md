@@ -1,5 +1,6 @@
 [![CI](https://github.com/dobro10k2/project-devops-deploy/actions/workflows/ci.yml/badge.svg)](https://github.com/dobro10k2/project-devops-deploy/actions/workflows/ci.yml)
 
+
 # Bulletin Board Application
 
 Bulletin board service built with **Spring Boot** and **React Admin**.
